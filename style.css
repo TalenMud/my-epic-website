@@ -1,0 +1,186 @@
+/* TODO 3: change these four colors and make the site yours. */
+:root {
+  --page: #2630d6;
+  --text: #fff5cf;
+  --accent: #ffa6cf;
+  --line: #ffd23f;
+
+  /* You don't need to change anything below this line. */
+  --rail: 2.5rem;
+  --indent: 5.5rem;
+  --branch: 3.5rem;
+  --dot: 1.25rem;
+  --stroke: 4px;
+}
+
+@media (max-width: 40rem) {
+  :root {
+    --rail: 1.75rem;
+    --indent: 4rem;
+    --branch: 1.75rem;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: clamp(1.25rem, 5vw, 4rem);
+  background: var(--page);
+  color: var(--text);
+  font-family: "Atkinson Hyperlegible", system-ui, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.history {
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-weight: 800;
+}
+
+h1 {
+  margin: 0 0 2rem;
+  font-size: clamp(3.5rem, 15vw, 10rem);
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  overflow-wrap: anywhere;
+}
+
+h2 {
+  margin: 0 0 1rem;
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+p {
+  max-width: 62ch;
+  margin: 0;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--line);
+}
+
+a:focus-visible {
+  outline: 3px solid var(--line);
+  outline-offset: 3px;
+}
+
+/* Your photo is the very first commit. */
+.intro {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--indent) - var(--rail) * 2);
+}
+
+.photo {
+  flex: none;
+  width: calc(var(--rail) * 2);
+  height: calc(var(--rail) * 2);
+  border: var(--stroke) solid var(--line);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tagline {
+  font-size: 1.35rem;
+  line-height: 1.3;
+}
+
+/* Every section is a commit: a dot on one long line. */
+.commit {
+  position: relative;
+  padding: 3rem 0 1rem var(--indent);
+}
+
+.commit::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--rail) - var(--stroke) / 2);
+  width: var(--stroke);
+  background: var(--line);
+}
+
+.commit > :first-child::before {
+  content: "";
+  position: absolute;
+  top: 3.3rem;
+  left: calc(var(--rail) - var(--dot) / 2);
+  z-index: 1;
+  width: var(--dot);
+  height: var(--dot);
+  border-radius: 50%;
+  background: var(--line);
+}
+
+.commit:last-child::after {
+  bottom: auto;
+  height: 3.5rem;
+}
+
+/* A section on a branch leaves the line and joins it again. */
+.branch {
+  padding: 5rem 0 3rem calc(var(--indent) + var(--branch));
+}
+
+.branch::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0.5rem;
+  left: var(--rail);
+  width: var(--branch);
+  border: var(--stroke) solid var(--accent);
+  border-left: 0;
+  border-radius: 0 3rem 3rem 0;
+}
+
+.branch > :first-child::before {
+  top: 5.3rem;
+  left: calc(var(--rail) + var(--branch) - var(--dot) / 2);
+  background: var(--accent);
+}
+
+.project {
+  margin-bottom: 1.5rem;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 1.35rem;
+}
+
+footer.commit p {
+  font-size: 1rem;
+}
+
+.message {
+  max-width: 62ch;
+}
