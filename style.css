@@ -103,8 +103,9 @@ a:focus-visible {
 }
 
 .tagline {
-  font-size: 1.35rem;
-  line-height: 1.3;
+  font-weight: bold;
+  margin-left: 20px;
+  font-size: 50px;
 }
 
 /* Every section is a commit: a dot on one long line. */
